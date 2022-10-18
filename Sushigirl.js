@@ -2,7 +2,14 @@ const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
 const imageMaki = new Image ();
-imageMaki.src = "./images/maki.png";
+imageMaki.src = "./images/sushigirl.png";
+
+const onigiri = new Image ();
+onigiri.src = "./images/onigiri2.png";
+
+const wasabi = new Image ();
+wasabi.src = "./images/wasabi.png";
+
 let score = 0
 let stopGame = false
 let obstaculosArray = []
@@ -23,7 +30,8 @@ class Maki {
         this.y = 250
         this.speed= 1
         this.w = 70
-        this.h = 100
+        this.h = 70
+        
     }
         drawMaki (){
             ctx.drawImage (imageMaki,this.x,this.y,this.w,this.h)
@@ -63,35 +71,32 @@ document.addEventListener ("keydown",(e)=> {
 })
 
 class Obstaculo {
-    constructor (color){
+    constructor (tipo){
         this.x = 700
         this.y= Math.random ()*canvas.height
-        this.color = color
-        this.speed = 1
-        this.w =50
-        this.h =30
-        this.move = true
+        this.speed = 3
+        this.w =70
+        this.h =70
+        this.tipo = tipo
+        this.collition=false
     }
     
     drawObstaculo (){
-        if (this.x <= 0 && this.move === true){
-            score++
-            this.move = false;
-        }
         this.x -=this.speed
-        ctx.fillStyle = this.color
-        ctx.fillRect (this.x-=1,this.y, this.w,this.h)
+        if(this.tipo === "wasabi"){
+            ctx.drawImage (wasabi,this.x,this.y,this.w,this.h)
+        } else if(this.tipo === "onigiri"){
+            ctx.drawImage (onigiri,this.x,this.y,this.w,this.h)
+        }
     }
 }
-
-let obstacles = new Obstaculo
 
  setInterval(()=> {
     let n= Math.floor(Math.random()*2)
     if(n===0){
-        obstaculosArray.push(new Obstaculo("pink"))
+        obstaculosArray.push(new Obstaculo("onigiri"))
     } else if(n===1){
-        obstaculosArray.push(new Obstaculo("green"))
+        obstaculosArray.push(new Obstaculo("wasabi"))
     }
 },3000)
   
@@ -110,24 +115,23 @@ const drawScore=()=>{
   }
 
   const update = () => {
-        if (!stopGame) {
+    if (!stopGame) {
         ctx.clearRect (0,0,canvas.width,canvas.height)
         maki.drawMaki();
-
         for (let i =0; i< obstaculosArray.length;i++){
-          obstaculosArray[i].drawObstaculo()  
-          if (maki.contains(obstaculosArray[i])){
-            stopGame =true;
-          }
-          drawScore ()
+            obstaculosArray[i].drawObstaculo()
+            if(maki.contains(obstaculosArray[i])){
+                if (obstaculosArray[i].tipo ==="wasabi"){
+                    stopGame = true;
+                    drawGameOver ()
+                } else if(obstaculosArray[i].tipo === "onigiri" && obstaculosArray[i].collition === false){
+                    score+=100
+                    obstaculosArray[i].collition=true
+                }
+            }
+            drawScore()
         }
-        
-    } else {
-        drawGameOver ()
+        requestAnimationFrame(update)
     }
-    requestAnimationFrame (update)
-    }
-
-//const checkObjEaten = (obs,b) => {
-    //return (obs.contains (b))
+}
 
