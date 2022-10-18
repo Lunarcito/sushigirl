@@ -1,0 +1,47 @@
+body {
+    padding: 0;
+    text-align: center;
+  }
+  
+  .game-intro {
+    float: left;
+    padding: 0% 10%;
+  }
+  
+  .game-intro p {
+    font-size: 18px;
+    font-family: "Verdana"
+  }
+  
+  .logo-img {
+    width: 250px;
+  }
+  
+  .arrows-img {
+    width: 100px;
+  }
+  
+  body button {
+    font-size: 30px;
+    background-color: purple;
+    color: pink;
+    padding: 0px 0px;
+    border: 0;
+    box-shadow: 0;
+    border-radius: 0px;
+    margin-bottom: 0px;
+  }
+  
+  #game-board {
+      float: center;
+      padding: 0px 0px;
+  
+  }
+  
+  #canvas{
+    background-image:url(./images/SushiFondo.jpg);
+    background-color: purple;
+    background-repeat:no-repeat;
+    background-position:center;
+  }
+  
