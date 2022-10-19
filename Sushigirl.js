@@ -88,11 +88,11 @@ class Obstaculo {
     
     drawObstaculo (){
         this.x -=this.speed
-        if(this.tipo === "wasabi"){
+        if(this.tipo === "wasabi" && this.collition=== false){
             ctx.drawImage (wasabi,this.x,this.y,this.w,this.h)
-        } else if(this.tipo === "onigiri"){
+        } else if(this.tipo === "onigiri" && this.collition=== false){
             ctx.drawImage (onigiri,this.x,this.y,this.w,this.h)
-        } else if (this.tipo === "maki"){
+        } else if (this.tipo === "maki" && this.collition=== false){
             ctx.drawImage (maki,this.x,this.y,this.w,this.h)
        }
     }
@@ -140,10 +140,8 @@ const drawLifes=()=>{
                     lifes--;  
                     obstaculosArray[i].collition=true
                     } else {
-                        lifes--;
                         return drawGameOver ()
                     }
-                
                 } else if(obstaculosArray[i].tipo === "onigiri" && obstaculosArray[i].collition === false){
                     score+=100                    
                     obstaculosArray[i].collition=true
