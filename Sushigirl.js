@@ -31,11 +31,12 @@ function startGame(){
 
 class Sushi {
     constructor (){
-        this.x = 70
+        this.x = 60
         this.y = 300
         this.speed= 1
         this.w = 70
         this.h = 70
+        this.moving = true
         
     }
         drawSushi (){
@@ -43,13 +44,13 @@ class Sushi {
         }
     
         moveUp (){
-            if (this.y<=this.h || stopGame === true){
+            if (this.y<=this.h || this.stopGame === true || !this.moving){
                 return
             }
             this.y-=this.h
         }
         moveDown(){
-            if(this.y>=canvas.height-200||this.stopGame===true){
+            if(this.y>=canvas.height-200||this.stopGame===true||!this.moving){
             return
         }
             this.y+= this.h
@@ -64,21 +65,11 @@ class Sushi {
 
     let sushi = new Sushi
 
-document.addEventListener ("keydown",(e)=> {
-    console.log(e);
-    if (e.keyCode === 38){
-        sushi.moveUp ()
-        sushi.drawSushi ()
-    } else if (e.keyCode === 40){
-        sushi.moveDown ()
-        sushi.drawSushi ()
-    }
-})
 
 class Obstaculo {
     constructor (tipo){
         this.x = 800
-        this.y= Math.random ()*canvas.height-100
+        this.y= Math.random ()*(canvas.height-100)
         this.speed = 4
         this.w =70
         this.h =70
@@ -128,6 +119,17 @@ const drawLifes=()=>{
     ctx.fillText(gameOver +`Your final score is ${score}`,100,100)
   }
 
+  document.addEventListener ("keydown",(e)=> {
+    console.log(e);
+    if (e.keyCode === 38){
+        sushi.moveUp ()
+        sushi.drawSushi ()
+    } else if (e.keyCode === 40){
+        sushi.moveDown ()
+        sushi.drawSushi ()
+    }
+})
+
   const update = () => {
     if (!stopGame) {
         ctx.clearRect (0,0,canvas.width,canvas.height)
@@ -143,11 +145,16 @@ const drawLifes=()=>{
                         return drawGameOver ()
                     }
                 } else if(obstaculosArray[i].tipo === "onigiri" && obstaculosArray[i].collition === false){
-                    score+=100                    
+                    score+=100                                        
                     obstaculosArray[i].collition=true
                 } else if(obstaculosArray[i].tipo === "maki" && obstaculosArray[i].collition === false){
                     score+=500;
                     obstaculosArray[i].collition=true
+                } else if (obstaculosArray[i].tipo === "maki" && obstaculosArray[i].collition === true){
+                    sushi.moving = false
+                    setTimeout(() => {
+                        sushi.moving = true
+                    },2500)
                 }
             }
             drawLifes ()
