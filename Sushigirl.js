@@ -24,8 +24,8 @@ const startButton = document.getElementById("start-button");
 const canvashidden = document.getElementById ("canvas");
 const instructionshidden = document.getElementById ("instructions");
 const gameOverPage = document.getElementById("gameOver");
-const tittlehidden = document.getElementById("tittle");  
-const backgroundhidden = document.getElementById("background");
+const titlehidden = document.getElementById("title");  
+
 
 window.onload = ()=> {
     document.getElementById('start-button').onclick = ()=> {
@@ -157,9 +157,13 @@ const drawLifes=()=>{
 
 startButton.addEventListener("click", ()=>{
     console.log( "clicki")
+
+    canvashidden.classList.remove("canvasFondoMenu")
+    canvashidden.classList.add("canvasFondoJuego")
+
     canvashidden.classList.remove ("hidden")
     startButton.classList.add ("hidden")
-    tittlehidden.classList.add ("hidden")
+    titlehidden.classList.add ("hidden")
     instructionshidden.classList.add ("hidden")
     backgroundhidden.classList.add ("hidden")
 })

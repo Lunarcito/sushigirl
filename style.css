@@ -1,45 +1,35 @@
 * {
   padding: 10;
   margin: 0;
-  box-sizing: border-box;
 }
 
 body {
   
     font-size: 20px;
-    display: flex;
-    padding: 10;
+    
     text-align: center;
     align-items: center;
     color: cadetblue;
     }
 
-  .title {
-    font-family: "Arial";
-    text-align: center ;
-    color: purple;
-    margin: 0px;
-    position:absolute;
-       
-    
-}
    
   body button {
     font-size: 40px;
     background-color: purple;
     color: pink;
-    padding: 20px 20px;
+    padding: 50px 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     border: 50;
     box-shadow: 10;
     border-radius: 10px;
-    margin-bottom: 10px;
     align-items: center;
   }
   
   #game-board {
-      float: center;
+      position: relative;
       padding: 50px 10px;
-  
+      background-color: blue;
   }
   
   .game-over
@@ -63,10 +53,11 @@ body {
 		}
 	
     .contenedor{
-      position:absolute;
-      background-image:url(./images/SushiFondo.jpg);
-      background-repeat:no-repeat;
-         
+      background-color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
     
   .hidden {
@@ -74,9 +65,13 @@ body {
     display: none;
   }
   #canvas{
-    position:absolute;
+    background-color: aliceblue;
+  }
+  .canvasFondoJuego{
     background-image:url(./images/sushi_background.png);
     background-repeat:no-repeat;
-       
   }
-  
+  .canvasFondoMenu{
+    background-image:url(./images/SushiFondo.jpg);
+    background-repeat:no-repeat;
+  }
