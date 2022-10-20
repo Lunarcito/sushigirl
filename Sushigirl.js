@@ -68,15 +68,15 @@ class Sushi {
         }
     
         moveUp (){
-            if (this.y<=this.h || this.stopGame === true || !this.moving){
+            if (this.y<=this.h && this.stopGame && !this.moving){
                 return
             }
             this.y-=this.h
         }
         moveDown(){
-            if(this.y>=canvas.height-200||this.stopGame===true||!this.moving){
+            if(this.y>=canvas.height-200 && this.stopGame && !this.moving){
             return
-        }
+            }
             this.y+= this.h
         }
         contains(b){
@@ -140,18 +140,20 @@ const drawLifes=()=>{
   const drawGameOver=()=>{
     let gameOver= "Game Over!"
     ctx.font = "40px Arial";
-    ctx.fillStyle = "purple";
+    ctx.fillStyle = "white";
     ctx.fillText(gameOver +`Your final score is ${score}`,100,100)
   }
 
   document.addEventListener ("keydown",(e)=> {
     console.log(e);
-    if (e.keyCode === 38){
-        sushi.moveUp ()
-        sushi.drawSushi ()
-    } else if (e.keyCode === 40){
-        sushi.moveDown ()
-        sushi.drawSushi ()
+    if (!stopGame) {
+        if (e.keyCode === 38){
+            sushi.moveUp ()
+            sushi.drawSushi ()
+        } else if (e.keyCode === 40){
+            sushi.moveDown ()
+            sushi.drawSushi ()
+        }
     }
 })
 
@@ -181,11 +183,9 @@ startButton.addEventListener("click", ()=>{
                     lifes--;  
                     obstaculosArray[i].collition=true
                     } else {
-                        drawGameOver ()
-                        setInterval(()=>{
-                        canvashidden.classList.add("hidden")
+                        stopGame=true
                         gameOverPage.classList.remove ("hidden")
-                        },4000) 
+                        drawGameOver ()
                                         
                     }
                 } else if(obstaculosArray[i].tipo === "onigiri" && obstaculosArray[i].collition === false){
