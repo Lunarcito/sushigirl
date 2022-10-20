@@ -1,12 +1,12 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
+const biteSound = new sound ("./bitesound.wav");
 const sushigirl = new Image ();
 sushigirl.src = "./images/sushigirl.png";
 
 const maki = new Image ();
 maki.src = "./images/maki.png"
-
 
 const onigiri = new Image ();
 onigiri.src = "./images/onigiri2.png";
@@ -19,27 +19,51 @@ let lifes = 3
 let stopGame = false
 let obstaculosArray = []
 
+//DOM ELements
+const startButton = document.getElementById("start-button");
+const canvashidden = document.getElementById ("canvas");
+const instructionshidden = document.getElementById ("instructions");
+const gameOverPage = document.getElementById("gameOver");
+const tittlehidden = document.getElementById("tittle");  
+const backgroundhidden = document.getElementById("background");
+
 window.onload = ()=> {
     document.getElementById('start-button').onclick = ()=> {
         startGame ();
     };
 }
 
+function sound(src){
+    this.sound=document.createElement ("audio");
+    this.sound.src=src;
+    this.sound.setAttribute("preload","auto");
+    this.sound.setAttribute("controls","none");
+    this.sound.style.display = "none";
+    document.body.appendChild (this.sound)
+    this.play=function(){
+        this.sound.play()
+    }
+    this.stop=function(){
+        this.sound.pause();
+    }
+}
 function startGame(){
     update ()
 }
 
 class Sushi {
     constructor (){
-        this.x = 60
+        this.x = 70
         this.y = 300
         this.speed= 1
         this.w = 70
         this.h = 70
+        this.angle=0
         this.moving = true
         
     }
         drawSushi (){
+
             ctx.drawImage (sushigirl,this.x,this.y,this.w,this.h)
         }
     
@@ -69,18 +93,19 @@ class Sushi {
 class Obstaculo {
     constructor (tipo){
         this.x = 800
-        this.y= Math.random ()*(canvas.height-100)
+        this.y= Math.random ()*(canvas.height-70)
         this.speed = 4
         this.w =70
         this.h =70
         this.tipo = tipo
-        this.collition=false
+        this.collition=false       
+
     }
     
     drawObstaculo (){
         this.x -=this.speed
         if(this.tipo === "wasabi" && this.collition=== false){
-            ctx.drawImage (wasabi,this.x,this.y,this.w,this.h)
+           ctx.drawImage (wasabi,this.x,this.y,this.w,this.h)
         } else if(this.tipo === "onigiri" && this.collition=== false){
             ctx.drawImage (onigiri,this.x,this.y,this.w,this.h)
         } else if (this.tipo === "maki" && this.collition=== false){
@@ -130,7 +155,16 @@ const drawLifes=()=>{
     }
 })
 
-  const update = () => {
+startButton.addEventListener("click", ()=>{
+    console.log( "clicki")
+    canvashidden.classList.remove ("hidden")
+    startButton.classList.add ("hidden")
+    tittlehidden.classList.add ("hidden")
+    instructionshidden.classList.add ("hidden")
+    backgroundhidden.classList.add ("hidden")
+})
+
+  const update = () => {    
     if (!stopGame) {
         ctx.clearRect (0,0,canvas.width,canvas.height)
         sushi.drawSushi();
@@ -138,23 +172,32 @@ const drawLifes=()=>{
             obstaculosArray[i].drawObstaculo()
             if(sushi.contains(obstaculosArray[i])){
                 if (obstaculosArray[i].tipo ==="wasabi"&& obstaculosArray[i].collition === false){
+                    biteSound.play();
                     if(lifes >1){
                     lifes--;  
                     obstaculosArray[i].collition=true
                     } else {
-                        return drawGameOver ()
+                        drawGameOver ()
+                        setInterval(()=>{
+                        canvashidden.classList.add("hidden")
+                        gameOverPage.classList.remove ("hidden")
+                        },4000) 
+                                        
                     }
                 } else if(obstaculosArray[i].tipo === "onigiri" && obstaculosArray[i].collition === false){
+                    biteSound.play();
                     score+=100                                        
                     obstaculosArray[i].collition=true
                 } else if(obstaculosArray[i].tipo === "maki" && obstaculosArray[i].collition === false){
-                    score+=500;
-                    obstaculosArray[i].collition=true
+                    
+                    obstaculosArray[i].collition=true                    
                 } else if (obstaculosArray[i].tipo === "maki" && obstaculosArray[i].collition === true){
+                    biteSound.play();
                     sushi.moving = false
                     setTimeout(() => {
                         sushi.moving = true
-                    },2500)
+                    },3000)
+                    
                 }
             }
             drawLifes ()
@@ -164,3 +207,10 @@ const drawLifes=()=>{
     }
 }
 
+/*
+
+            ctx.save ();
+            ctx.translate(sushi.x + 20, sushi.y + 20);
+            ctx.rotate(sushi.angle+=0.02);
+            ctx.rotate(45 * Math.PI / 180)
+*/

@@ -4,20 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Sushi Girl</title>
-  </head>
+    <link rel="stylesheet" href="style.css" />  </head>
   <body>
-    <div class="game-intro">
-      <img src="./images/logo.png" alt="" class="logo-img" />
-      <br />
-      <button id="start-button">StartGame</button>
-      <p>Use the up and down arrow to control the Sushigirl!</p>
-      <img src="./images/arrows.png" alt="" class="arrows-img" />
+    
+    <div class="contenedor">
+      <h1  id="tittle"> Sushigirl </h1>
+    <button id="start-button">StartGame</button>
+    <p id="instructions">Use the up and down arrow to control the Sushigirl!</p>
     </div>
 
     <div id="game-board">
-      <canvas id="canvas" width="900" height="700"></canvas>
+      <canvas class="hidden" id="canvas" width="900" height="700"></canvas>
+    </div>
+    <div id="gameOver" class="game-over hidden">
+      <h2>Fin del Juego</h2>
+      <p> Quieres comer mas sushi? Vuelve a intentarlo! </p>
+
     </div>
 
     <script type="text/javascript" src="Sushigirl.js"></script>
