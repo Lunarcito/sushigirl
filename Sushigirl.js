@@ -131,7 +131,7 @@ class Obstaculo {
 const drawScore=()=>{
     ctx.font = "30px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("Score: "+ score,750,150);
+    ctx.fillText("Score: "+ score,700,150);
   }
 const drawLifes=()=>{
     ctx.font = "30px Arial";
