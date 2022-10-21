@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family:'DynaPuff', cursive;
   font-size: 30px;    
   text-align: center;
   align-items: center;
@@ -26,10 +26,10 @@ body {
   
   #instructions {
   font-size: 30px; 
-  font-family: Impact;  
+  font-family: 'DynaPuff', cursive;  
   text-align: center;
   align-items: center;
-  color: purple;
+  color: rgb(205, 67, 32);
   margin-bottom: 30px;
   }
   #game-board {
@@ -47,7 +47,7 @@ body {
   transform: translate(-50%, -50%);
   border: 50;
   padding: 10px;
-  box-shadow: 20;
+  box-shadow: 30;
   border-radius: 20px;
   }
 

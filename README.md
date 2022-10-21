@@ -20,9 +20,12 @@ Suhigirl is a single player game.
 
 3. Good sushis vs Evil sushis:
 
-- Pick all the onigiris : They give you extra points! 
+- Pick all nigiris and onigiris : They give you extra points! 
+
+Nigiris :   +200
+Onigiris:   +100
 
 - Avoid the makis: They make you slow
 
-- Do not eat wasabis!: They kill you, be careful! You just have 03 lifes.
+- Do not eat wasabi: They kill you, be careful! You just have 03 lifes.
 

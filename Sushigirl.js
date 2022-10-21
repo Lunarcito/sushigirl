@@ -1,7 +1,8 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
-const biteSound = new sound ("./bitesound.wav");
+const biteSound = new sound ("./music/bitesound.wav");
+const backgroundSound = new sound ("./music/backgroundsound.wav");
 const sushigirl = new Image ();
 sushigirl.src = "./images/sushigirl.png";
 
@@ -10,6 +11,9 @@ maki.src = "./images/maki.png"
 
 const onigiri = new Image ();
 onigiri.src = "./images/onigiri2.png";
+
+const nigiri = new Image ();
+nigiri.src = "./images/nigiri.png";
 
 const wasabi = new Image ();
 wasabi.src = "./images/wasabi.png";
@@ -60,7 +64,6 @@ class Sushi {
         this.speed= 1
         this.w = 109
         this.h = 80
-        this.angle=0
         this.moving = true
         
     }
@@ -96,8 +99,8 @@ class Obstaculo {
     constructor (tipo){
         this.x = 800
         this.y= Math.random ()*(canvas.height-70)
-        this.speed = 7
-        this.w =75
+        this.speed = 6
+        this.w =90
         this.h =75
         this.tipo = tipo
         this.collition=false       
@@ -110,6 +113,8 @@ class Obstaculo {
            ctx.drawImage (wasabi,this.x,this.y,this.w,this.h)
         } else if(this.tipo === "onigiri" && this.collition=== false){
             ctx.drawImage (onigiri,this.x,this.y,this.w,this.h)
+        } else if(this.tipo === "nigiri" && this.collition=== false){
+            ctx.drawImage (nigiri,this.x,this.y,this.w,this.h)
         } else if (this.tipo === "maki" && this.collition=== false){
             ctx.drawImage (maki,this.x,this.y,this.w,this.h)
        }
@@ -117,15 +122,17 @@ class Obstaculo {
 }
 
  setInterval(()=> {
-    let n= Math.floor(Math.random()*3)
+    let n= Math.floor(Math.random()*4)
     if(n===0){
         obstaculosArray.push(new Obstaculo("onigiri"))
     } else if(n===1){
         obstaculosArray.push(new Obstaculo("wasabi"))
     } else if(n===2){
         obstaculosArray.push(new Obstaculo("maki"))
+    } else if(n===3){
+        obstaculosArray.push(new Obstaculo("nigiri"))
     }
-},1500)
+},500)
   
 
 const drawScore=()=>{
@@ -143,7 +150,8 @@ const drawLifes=()=>{
     let gameOver= "Game Over!"
     ctx.font = "40px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText(gameOver +`Your final score is ${score}`,100,100)
+    ctx.fillRect = "blue"
+    ctx.fillText("     " +`Your final score is ${score}`,100,100)
   }
 
   document.addEventListener ("keydown",(e)=> {
@@ -179,6 +187,7 @@ startButton.addEventListener("click", ()=>{
     if (!stopGame) {
         ctx.clearRect (0,0,canvas.width,canvas.height)
         sushi.drawSushi();
+        
         for (let i =0; i< obstaculosArray.length;i++){
             obstaculosArray[i].drawObstaculo()
             if(sushi.contains(obstaculosArray[i])){
@@ -195,10 +204,15 @@ startButton.addEventListener("click", ()=>{
                     }
                 } else if(obstaculosArray[i].tipo === "onigiri" && obstaculosArray[i].collition === false){
                     biteSound.play();
-                    score+=100                                        
+                    score+=100
+                    backgroundSound.play()                                       
+                    obstaculosArray[i].collition=true
+                } else if(obstaculosArray[i].tipo === "nigiri" && obstaculosArray[i].collition === false){
+                    biteSound.play();
+                    score+=200
+                    backgroundSound.play()                                       
                     obstaculosArray[i].collition=true
                 } else if(obstaculosArray[i].tipo === "maki" && obstaculosArray[i].collition === false){
-                    
                     obstaculosArray[i].collition=true                    
                 } else if (obstaculosArray[i].tipo === "maki" && obstaculosArray[i].collition === true){
                     biteSound.play();
@@ -209,17 +223,13 @@ startButton.addEventListener("click", ()=>{
                     
                 }
             }
+            
             drawLifes ()
             drawScore()
+            
         }
         requestAnimationFrame(update)
     }
 }
 
-/*
 
-            ctx.save ();
-            ctx.translate(sushi.x + 20, sushi.y + 20);
-            ctx.rotate(sushi.angle+=0.02);
-            ctx.rotate(45 * Math.PI / 180)
-*/
