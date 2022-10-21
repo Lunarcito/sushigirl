@@ -101,7 +101,7 @@ class Obstaculo {
     constructor (tipo){
         this.x = 800
         this.y= Math.random ()*(canvas.height-70)
-        this.speed = 6
+        this.speed = 7
         this.w =90
         this.h =75
         this.tipo = tipo
@@ -140,17 +140,16 @@ class Obstaculo {
 const drawScore=()=>{
     ctx.font = "30px DynaPuff";
     ctx.fillStyle = "white";
-    ctx.fillText("★ Score: "+ score,700,150);
+    ctx.fillText("★ Score: "+ score,650,150);
   }
 const drawLifes=()=>{
     ctx.font = "30px DynaPuff";
     ctx.fillStyle = "brown";
-    ctx.fillText("❤ Lives: "+lifes,700,100);
+    ctx.fillText("❤ Lives: "+lifes,650,100);
   }
   
   const drawGameOver=()=>{
-    let gameOver= "Game Over!"
-    ctx.font = "40px Arlifeliveial";
+    ctx.font = "30px DynaPuff";;
     ctx.fillStyle = "white";
     ctx.fillText("             " +`Your final score is ${score}`,100,100)
   }

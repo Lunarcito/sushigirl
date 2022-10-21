@@ -11,7 +11,7 @@ Suhigirl is a single player game.
 
 ## How to Run? 
 
-
+Requires desktop Chrome, Firefox or Edge, and a keyboard.
 
 ## How to Play? 
 
@@ -31,3 +31,7 @@ Start menu:
 - Avoid the makis: They make you slow
 
 - Do not eat wasabi: They kill you, be careful! You just have 03 lifes.
+
+## Technologies
+
+Javascript and html5 with canvas
