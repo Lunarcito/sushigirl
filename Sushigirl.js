@@ -25,7 +25,9 @@ const canvashidden = document.getElementById ("canvas");
 const instructionshidden = document.getElementById ("instructions");
 const gameOverPage = document.getElementById("gameOver");
 const titlehidden = document.getElementById("title");  
-
+const arrowUp = document.getElementById("arrow-up");
+const arrowDown = document.getElementById("arrow-down");
+const contenedor = document.getElementById("contenedor");
 
 window.onload = ()=> {
     document.getElementById('start-button').onclick = ()=> {
@@ -94,7 +96,7 @@ class Obstaculo {
     constructor (tipo){
         this.x = 800
         this.y= Math.random ()*(canvas.height-70)
-        this.speed = 5
+        this.speed = 7
         this.w =75
         this.h =75
         this.tipo = tipo
@@ -127,14 +129,14 @@ class Obstaculo {
   
 
 const drawScore=()=>{
-    ctx.font = "20px Arial";
-    ctx.fillStyle = "purple";
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "white";
     ctx.fillText("Score: "+ score,750,150);
   }
 const drawLifes=()=>{
-    ctx.font = "20px Arial";
+    ctx.font = "30px Arial";
     ctx.fillStyle = "brown";
-    ctx.fillText("Lives: "+lifes,750,100);
+    ctx.fillText("Lives: "+lifes,700,100);
   }
   
   const drawGameOver=()=>{
@@ -167,7 +169,10 @@ startButton.addEventListener("click", ()=>{
     startButton.classList.add ("hidden")
     titlehidden.classList.add ("hidden")
     instructionshidden.classList.add ("hidden")
-    backgroundhidden.classList.add ("hidden")
+    arrowUp.classList.add ("hidden")
+    arrowDown.classList.add ("hidden")
+    contenedor.classList.add ("hidden")
+
 })
 
   const update = () => {    
