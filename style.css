@@ -8,18 +8,19 @@ body {
   font-size: 30px;    
   text-align: center;
   align-items: center;
-  color: purple;
+  color: rgb(161, 40, 115);
   }
   
   body button {
+    font-family:'DynaPuff';
   font-size: 40px;
-  background-color: purple;
-  color: pink;
+  background-color: rgb(31, 139, 153);
+  color: rgb(165, 18, 209);
   padding: 20px 20px;
   margin-top: 30px;
   margin-bottom: 30px;
-  border: 50;
-  box-shadow: 10;
+  border: 80;
+  box-shadow: 30;
   border-radius: 10px;
   align-items: center;
   }

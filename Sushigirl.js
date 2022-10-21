@@ -2,7 +2,9 @@ const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
 const biteSound = new sound ("./music/bitesound.wav");
-const backgroundSound = new sound ("./music/backgroundsound.wav");
+const extrascoreSound = new sound ("./music/extrascoreSound.wav");
+const gameSound = new sound ("./music/gameSound.mp3");
+
 const sushigirl = new Image ();
 sushigirl.src = "./images/sushigirl.png";
 
@@ -35,7 +37,7 @@ const contenedor = document.getElementById("contenedor");
 
 window.onload = ()=> {
     document.getElementById('start-button').onclick = ()=> {
-        startGame ();
+        startGame ();      
     };
 }
 
@@ -54,6 +56,7 @@ function sound(src){
     }
 }
 function startGame(){
+   
     update ()
 }
 
@@ -68,7 +71,6 @@ class Sushi {
         
     }
         drawSushi (){
-
             ctx.drawImage (sushigirl,this.x,this.y,this.w,this.h)
         }
     
@@ -184,10 +186,10 @@ startButton.addEventListener("click", ()=>{
 })
 
   const update = () => {    
+    gameSound.play()
     if (!stopGame) {
         ctx.clearRect (0,0,canvas.width,canvas.height)
         sushi.drawSushi();
-        
         for (let i =0; i< obstaculosArray.length;i++){
             obstaculosArray[i].drawObstaculo()
             if(sushi.contains(obstaculosArray[i])){
@@ -205,12 +207,12 @@ startButton.addEventListener("click", ()=>{
                 } else if(obstaculosArray[i].tipo === "onigiri" && obstaculosArray[i].collition === false){
                     biteSound.play();
                     score+=100
-                    backgroundSound.play()                                       
+                    extrascoreSound.play()                                       
                     obstaculosArray[i].collition=true
                 } else if(obstaculosArray[i].tipo === "nigiri" && obstaculosArray[i].collition === false){
                     biteSound.play();
                     score+=200
-                    backgroundSound.play()                                       
+                    extrascoreSound.play()                                       
                     obstaculosArray[i].collition=true
                 } else if(obstaculosArray[i].tipo === "maki" && obstaculosArray[i].collition === false){
                     obstaculosArray[i].collition=true                    
