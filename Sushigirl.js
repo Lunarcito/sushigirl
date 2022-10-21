@@ -138,22 +138,21 @@ class Obstaculo {
   
 
 const drawScore=()=>{
-    ctx.font = "30px Arial";
+    ctx.font = "30px DynaPuff";
     ctx.fillStyle = "white";
-    ctx.fillText("Score: "+ score,700,150);
+    ctx.fillText("★ Score: "+ score,700,150);
   }
 const drawLifes=()=>{
-    ctx.font = "30px Arial";
+    ctx.font = "30px DynaPuff";
     ctx.fillStyle = "brown";
     ctx.fillText("Lives: "+lifes,700,100);
   }
   
   const drawGameOver=()=>{
     let gameOver= "Game Over!"
-    ctx.font = "40px Arial";
+    ctx.font = "40px Arlifeliveial";
     ctx.fillStyle = "white";
-    ctx.fillRect = "blue"
-    ctx.fillText("     " +`Your final score is ${score}`,100,100)
+    ctx.fillText("             " +`Your final score is ${score}`,100,100)
   }
 
   document.addEventListener ("keydown",(e)=> {
