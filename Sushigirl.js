@@ -145,7 +145,7 @@ const drawScore=()=>{
 const drawLifes=()=>{
     ctx.font = "30px DynaPuff";
     ctx.fillStyle = "brown";
-    ctx.fillText("Lives: "+lifes,700,100);
+    ctx.fillText("❤ Lives: "+lifes,700,100);
   }
   
   const drawGameOver=()=>{
