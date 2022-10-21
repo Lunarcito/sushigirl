@@ -1,6 +1,8 @@
 
 # Sushigirl
 
+![](https://file%2B.vscode-resource.vscode-cdn.net/home/carolina/Javascript/ProyectoCanvas/sushigirl/images/sushigirl.png?version%3D1666350376093)
+
 ## What is Sushi girl?
 
 Everybody loves Sushi and it will be magic to eat all the sushi that we want. At least you can do it in this game "Sushi girl"
