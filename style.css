@@ -4,57 +4,64 @@
 }
 
 body {
-  
-    font-size: 20px;
-    
-    text-align: center;
-    align-items: center;
-    color: cadetblue;
-    }
-
-   
-  body button {
-    font-size: 40px;
-    background-color: purple;
-    color: pink;
-    padding: 20px 20px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    border: 50;
-    box-shadow: 10;
-    border-radius: 10px;
-    align-items: center;
+  font-family: sans-serif;
+  font-size: 30px;    
+  text-align: center;
+  align-items: center;
+  color: purple;
   }
   
+  body button {
+  font-size: 40px;
+  background-color: purple;
+  color: pink;
+  padding: 20px 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 50;
+  box-shadow: 10;
+  border-radius: 10px;
+  align-items: center;
+  }
+  
+  #instructions {
+  font-size: 30px; 
+  font-family: Impact;  
+  text-align: center;
+  align-items: center;
+  color: purple;
+  margin-bottom: 30px;
+  }
   #game-board {
-      position: relative;
-      padding: 50px 10px;
+  position: relative;
+  padding: 50px 10px;
   }
   
   .game-over
 	{	
-		background-color: aliceblue;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 50;
-    padding: 10px;
-    box-shadow: 20;
-    border-radius: 20px;
+	color: white;
+  background-color: skyblue;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 50;
+  padding: 10px;
+  box-shadow: 20;
+  border-radius: 20px;
   }
 
 	h2
 		{
 			margin: 0;
 			padding: 0;
-			font-size: 40px;
+			font-size: 100px;
 		}
 	
     .contenedor{
       
       position: absolute;
-      top: 30%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
     }

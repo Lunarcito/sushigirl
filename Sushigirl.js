@@ -56,8 +56,8 @@ class Sushi {
         this.x = 70
         this.y = 300
         this.speed= 1
-        this.w = 70
-        this.h = 70
+        this.w = 109
+        this.h = 80
         this.angle=0
         this.moving = true
         
@@ -68,13 +68,13 @@ class Sushi {
         }
     
         moveUp (){
-            if (this.y<=this.h && this.stopGame && !this.moving){
+            if (this.y<=this.h || this.stopGame || !this.moving){
                 return
             }
             this.y-=this.h
         }
         moveDown(){
-            if(this.y>=canvas.height-200 && this.stopGame && !this.moving){
+            if(this.y>=canvas.height-200 || this.stopGame || !this.moving){
             return
             }
             this.y+= this.h
@@ -94,9 +94,9 @@ class Obstaculo {
     constructor (tipo){
         this.x = 800
         this.y= Math.random ()*(canvas.height-70)
-        this.speed = 4
-        this.w =70
-        this.h =70
+        this.speed = 5
+        this.w =75
+        this.h =75
         this.tipo = tipo
         this.collition=false       
 
