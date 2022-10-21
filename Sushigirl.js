@@ -34,6 +34,17 @@ const titlehidden = document.getElementById("title");
 const arrowUp = document.getElementById("arrow-up");
 const arrowDown = document.getElementById("arrow-down");
 const contenedor = document.getElementById("contenedor");
+const isushigirl = document.getElementById("sushigirl");
+const inigiri= document.getElementById("imagenigiri");
+const ionigiri = document.getElementById("imageonigiri");
+const imaki = document.getElementById("imagemaki");
+const iwasabi = document.getElementById("wasabi");
+const tSushigirl = document.getElementById("tsushigirl");
+const tOnigiri = document.getElementById("tonigiri");
+const tNigiri = document.getElementById("tnigiri");
+const tMaki = document.getElementById("tmaki");
+const tWasabi = document.getElementById("twasabi");
+const contenedorImagenes = document.getElementById("contenedorimagenes")
 
 window.onload = ()=> {
     document.getElementById('start-button').onclick = ()=> {
@@ -180,6 +191,16 @@ startButton.addEventListener("click", ()=>{
     arrowUp.classList.add ("hidden")
     arrowDown.classList.add ("hidden")
     contenedor.classList.add ("hidden")
+    isushigirl.classList.add ("hidden")
+    ionigiri.classList.add ("hidden")
+    inigiri.classList.add ("hidden")
+    imaki.classList.add ("hidden")
+    tSushigirl.classList.add ("hidden")
+    tOnigiri.classList.add ("hidden")
+    tNigiri.classList.add ("hidden")
+    tMaki.classList.add ("hidden")
+    tWasabi.classList.add ("hidden")
+    contenedorImagenes.classList.add ("hidden")
 
 })
 
