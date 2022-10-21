@@ -12,7 +12,7 @@ body {
   }
   
   body button {
-    font-family:'DynaPuff';
+  font-family:'DynaPuff';
   font-size: 40px;
   background-color: rgb(31, 139, 153);
   color: rgb(165, 18, 209);
@@ -39,7 +39,9 @@ body {
   }
   
   .game-over
-	{	
+	{
+  font-family:'DynaPuff';
+  font-size: 30px;
 	color: white;
   background-color: skyblue;
   position: absolute;

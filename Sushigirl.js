@@ -101,7 +101,7 @@ class Obstaculo {
     constructor (tipo){
         this.x = 800
         this.y= Math.random ()*(canvas.height-70)
-        this.speed = 7
+        this.speed = 8
         this.w =90
         this.h =75
         this.tipo = tipo
@@ -149,9 +149,9 @@ const drawLifes=()=>{
   }
   
   const drawGameOver=()=>{
-    ctx.font = "30px DynaPuff";;
+    ctx.font = "40px DynaPuff";;
     ctx.fillStyle = "white";
-    ctx.fillText("             " +`Your final score is ${score}`,100,100)
+    ctx.fillText(`Your final score is ${score}`,250,600)
   }
 
   document.addEventListener ("keydown",(e)=> {
