@@ -5,9 +5,8 @@
 
 body {
   font-family:'DynaPuff', cursive;
-  font-size: 20px;    
-  text-align: center;
-  align-items: center;
+  font-size: 27px;    
+  text-align: center; 
   color: rgb(161, 40, 115);
   }
   
@@ -26,12 +25,13 @@ body {
   }
   
   #instructions {
-  font-size: 20px; 
+  font-size: 30px; 
   font-family: 'DynaPuff', cursive;  
-  text-align: lcenter;
+  text-align: center;
   align-items: center;
   color: rgb(205, 67, 32);
   margin-bottom: 30px;
+  width: 450px;
   }
 
   #game-board {
@@ -43,17 +43,18 @@ body {
 	{
   align-items: flex;
   font-family:'DynaPuff';
-  font-size: 30px;
+  font-size: 50px;
 	color: white;
   background-color: skyblue;
   position: absolute;
   top: 50%;
-  left: 25%;
+  left: 45%;
   transform: translate(-50%, -50%);
   border: 50;
   padding: 10px;
   box-shadow: 30;
   border-radius: 20px;
+  width: 800px;
   }
 
 	h2
@@ -67,7 +68,7 @@ body {
       
       position: absolute;
       top: 40%;
-      left: 40%;
+      left: 50%;
       transform: translate(-50%, -50%);
     }
     #contenedorimagenes{
@@ -75,8 +76,10 @@ body {
       position: absolute;
       top: 15%;
       left: 70%;
-      padding: 10px 10px;
-      
+      padding: 20px 20px;
+      margin-bottom:30px ;
+      margin-top:30px ;
+    
     }
     
   .hidden {
@@ -91,9 +94,13 @@ body {
     background-image:url(./images/sushi_background.png);
     background-repeat:no-repeat;
     background-size: cover;
+    align-items: center;
   }
   .canvasFondoMenu{
+
     background-image:url(./images/SushiFondo.jpg);
     background-repeat:no-repeat;
     background-size: cover;
+    align-items: center;
+
   }

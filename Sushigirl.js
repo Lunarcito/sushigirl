@@ -34,16 +34,6 @@ const titlehidden = document.getElementById("title");
 const arrowUp = document.getElementById("arrow-up");
 const arrowDown = document.getElementById("arrow-down");
 const contenedor = document.getElementById("contenedor");
-const isushigirl = document.getElementById("sushigirl");
-const inigiri= document.getElementById("imagenigiri");
-const ionigiri = document.getElementById("imageonigiri");
-const imaki = document.getElementById("imagemaki");
-const iwasabi = document.getElementById("wasabi");
-const tSushigirl = document.getElementById("tsushigirl");
-const tOnigiri = document.getElementById("tonigiri");
-const tNigiri = document.getElementById("tnigiri");
-const tMaki = document.getElementById("tmaki");
-const tWasabi = document.getElementById("twasabi");
 const contenedorImagenes = document.getElementById("contenedorimagenes")
 
 window.onload = ()=> {
@@ -69,6 +59,31 @@ function sound(src){
 function startGame(){
    
     update ()
+    setInterval(()=> {
+        let n= Math.floor(Math.random()*4)
+        if(n===0){
+            obstaculosArray.push(new Obstaculo("onigiri"))
+        } else if(n===1){
+            obstaculosArray.push(new Obstaculo("wasabi"))
+        } else if(n===2){
+            obstaculosArray.push(new Obstaculo("maki"))
+        } else if(n===3){
+            obstaculosArray.push(new Obstaculo("nigiri"))
+        }
+    },500)
+
+    canvashidden.classList.remove("canvasFondoMenu")
+    canvashidden.classList.add("canvasFondoJuego")
+
+    canvashidden.classList.remove ("hidden")
+    startButton.classList.add ("hidden")
+    titlehidden.classList.add ("hidden")
+    instructionshidden.classList.add ("hidden")
+    arrowUp.classList.add ("hidden")
+    arrowDown.classList.add ("hidden")
+    contenedor.classList.add ("hidden")
+    contenedorImagenes.classList.add ("hidden")
+
 }
 
 class Sushi {
@@ -76,8 +91,8 @@ class Sushi {
         this.x = 70
         this.y = 300
         this.speed= 1
-        this.w = 109
-        this.h = 80
+        this.w = 150
+        this.h = 100
         this.moving = true
         
     }
@@ -113,8 +128,8 @@ class Obstaculo {
         this.x = 800
         this.y= Math.random ()*(canvas.height-70)
         this.speed = 8
-        this.w =90
-        this.h =75
+        this.w =135
+        this.h =112.5
         this.tipo = tipo
         this.collition=false       
 
@@ -134,35 +149,21 @@ class Obstaculo {
     }
 }
 
- setInterval(()=> {
-    let n= Math.floor(Math.random()*4)
-    if(n===0){
-        obstaculosArray.push(new Obstaculo("onigiri"))
-    } else if(n===1){
-        obstaculosArray.push(new Obstaculo("wasabi"))
-    } else if(n===2){
-        obstaculosArray.push(new Obstaculo("maki"))
-    } else if(n===3){
-        obstaculosArray.push(new Obstaculo("nigiri"))
-    }
-},500)
-  
-
 const drawScore=()=>{
     ctx.font = "30px DynaPuff";
     ctx.fillStyle = "white";
-    ctx.fillText("★ Score: "+ score,650,150);
+    ctx.fillText("★ Score: "+ score,1300,150);
   }
 const drawLifes=()=>{
     ctx.font = "30px DynaPuff";
     ctx.fillStyle = "brown";
-    ctx.fillText("❤ Lives: "+lifes,650,100);
+    ctx.fillText("❤ Lives: "+lifes,1300,100);
   }
   
   const drawGameOver=()=>{
     ctx.font = "40px DynaPuff";;
     ctx.fillStyle = "white";
-    ctx.fillText(`Your final score is ${score}`,250,600)
+    ctx.fillText(`Your final score is ${score}`,600,600)
   }
 
   document.addEventListener ("keydown",(e)=> {
@@ -176,32 +177,6 @@ const drawLifes=()=>{
             sushi.drawSushi ()
         }
     }
-})
-
-startButton.addEventListener("click", ()=>{
-    console.log( "clicki")
-
-    canvashidden.classList.remove("canvasFondoMenu")
-    canvashidden.classList.add("canvasFondoJuego")
-
-    canvashidden.classList.remove ("hidden")
-    startButton.classList.add ("hidden")
-    titlehidden.classList.add ("hidden")
-    instructionshidden.classList.add ("hidden")
-    arrowUp.classList.add ("hidden")
-    arrowDown.classList.add ("hidden")
-    contenedor.classList.add ("hidden")
-    isushigirl.classList.add ("hidden")
-    ionigiri.classList.add ("hidden")
-    inigiri.classList.add ("hidden")
-    imaki.classList.add ("hidden")
-    tSushigirl.classList.add ("hidden")
-    tOnigiri.classList.add ("hidden")
-    tNigiri.classList.add ("hidden")
-    tMaki.classList.add ("hidden")
-    tWasabi.classList.add ("hidden")
-    contenedorImagenes.classList.add ("hidden")
-
 })
 
   const update = () => {    
