@@ -1,7 +1,6 @@
-
 # Sushigirl
 
-![](https://file%2B.vscode-resource.vscode-cdn.net/home/carolina/Javascript/ProyectoCanvas/sushigirl/images/sushigirl.png?version%3D1666350376093)
+![alt text](./images/sushigirl-small.png)
 
 ## What is Sushi girl?
 
@@ -34,6 +33,12 @@ Start menu:
 
 - Do not eat wasabi: They kill you, be careful! You just have 03 lifes.
 
+## Demo
+
+![](https://i.imgur.com/QlLZHvk.gif)
+
 ## Technologies
 
-Javascript and html5 with canvas
+<img src="https://img.shields.io/badge/-javascript-F7DF1E?&style=for-the-badge&logo=javascript&logoColor=black" />
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+<img src="https://img.shields.io/badge/-css3-1572B6?&style=for-the-badge&logo=css3&logoColor=white" />
