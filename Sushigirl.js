@@ -74,7 +74,6 @@ function startGame(){
 
     canvashidden.classList.remove("canvasFondoMenu")
     canvashidden.classList.add("canvasFondoJuego")
-
     canvashidden.classList.remove ("hidden")
     startButton.classList.add ("hidden")
     titlehidden.classList.add ("hidden")
@@ -122,10 +121,9 @@ class Sushi {
 
     let sushi = new Sushi
 
-
 class Obstaculo {
     constructor (tipo){
-        this.x = 800
+        this.x = canvas.width
         this.y= Math.random ()*(canvas.height-70)
         this.speed = 8
         this.w =135
@@ -163,7 +161,7 @@ const drawLifes=()=>{
   const drawGameOver=()=>{
     ctx.font = "40px DynaPuff";;
     ctx.fillStyle = "white";
-    ctx.fillText(`Your final score is ${score}`,600,600)
+    ctx.fillText(`Your final score is ${score}`,600,700)
   }
 
   document.addEventListener ("keydown",(e)=> {
@@ -227,5 +225,3 @@ const drawLifes=()=>{
         requestAnimationFrame(update)
     }
 }
-
-
